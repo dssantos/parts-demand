@@ -11,6 +11,8 @@ python -m venv .parts_demand
 source .parts_demand/bin/activate
 python -m pip install -U pip
 pip install -r requirements.txt
+python manage.py migrate
+python manage.py test
 ```
 
 ### Windows
@@ -22,5 +24,7 @@ Set-ExecutionPolicy Unrestricted -Scope Process -force
 ./.parts_demand/Scripts/activate
 python -m pip install -U pip
 pip install -r requirements.txt
+python manage.py migrate
+python manage.py test
 ```
 
