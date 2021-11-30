@@ -1,0 +1,8 @@
+.parts_demand/
+*.pyc
+__pycache__
+.vscode
+.env
+*.sqlite3
+__cache__/
+staticfiles/
