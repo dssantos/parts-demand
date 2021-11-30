@@ -5,7 +5,7 @@
 
 ### Linux
 ```bash
-git clone https://github.com/dssantos/parts-demand parts_demand
+git clone https://github.com/dssantos/parts-demand.git parts_demand
 cd parts_demand
 python -m venv .parts_demand
 source .parts_demand/bin/activate
@@ -17,7 +17,7 @@ python manage.py test
 
 ### Windows
 ```bash
-git clone https://github.com/dssantos/parts-demand parts_demand
+git clone https://github.com/dssantos/parts-demand.git parts_demand
 cd parts_demand
 python -m venv .parts_demand
 Set-ExecutionPolicy Unrestricted -Scope Process -force
