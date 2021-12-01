@@ -13,6 +13,13 @@ class DeliveryAddressModelAdmin(admin.ModelAdmin):
         'street_number', 'complement', 'district', 'city', 'state', 'country'
         )
 
+class PartsDemandModelAdmin(admin.ModelAdmin):
+    list_display = (
+        'part_description', 'delivery_address', 'email', 
+        'phone', 'user_profile', 'status'
+        )
+
 
 admin.site.register(models.UserProfile, UserProfileModelAdmin)
 admin.site.register(models.DeliveryAddress, DeliveryAddressModelAdmin)
+admin.site.register(models.PartsDemand, PartsDemandModelAdmin)

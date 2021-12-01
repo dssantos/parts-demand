@@ -109,4 +109,13 @@ class PartsDemand(models.Model):
         settings.AUTH_USER_MODEL, 
         on_delete=models.CASCADE
     )
-    status = models.BooleanField(default=True)
+    status = models.BooleanField('Status de finalização', default=True)
+
+
+    class Meta:
+        verbose_name_plural = 'demandas de peça'
+        verbose_name = 'demanda de peça'
+
+    def __str__(self):
+        """Return string representation of part demand"""
+        return self.part_description

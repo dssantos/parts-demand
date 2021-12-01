@@ -3,7 +3,7 @@ from parts_demand_api.models import DeliveryAddress
 from parts_demand_api.models import UserProfile
 from parts_demand_api.models import PartsDemand
 
-class DeliveryAddressModelTest(TestCase):
+class PartsDemandModelTest(TestCase):
     
     def setUp(self):
         self.user = UserProfile.objects.create(
