@@ -94,6 +94,10 @@ class DeliveryAddress(models.Model):
         verbose_name_plural = 'endereços de entrega'
         verbose_name = 'endereço de entrega'
 
+    def __str__(self):
+        """Return string representation of delivery address"""
+        return self.local_description
+
 
 class PartsDemand(models.Model):
     """Parts demand model"""
