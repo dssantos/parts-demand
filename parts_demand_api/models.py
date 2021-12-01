@@ -88,3 +88,16 @@ class DeliveryAddress(models.Model):
     city = models.CharField('Cidade', max_length=50)
     state = models.CharField('Estado', max_length=50)
     country = models.CharField('País', max_length=50)
+
+
+class PartsDemand(models.Model):
+    """Parts demand model"""
+    part_description = models.CharField('Descrição da peça', max_length=100)
+    delivery_address = models.ForeignKey(DeliveryAddress, on_delete=models.CASCADE)
+    email = models.CharField('Email', max_length=50)
+    phone = models.CharField('Telefone', max_length=11)
+    user_profile = models.ForeignKey(
+        settings.AUTH_USER_MODEL, 
+        on_delete=models.CASCADE
+    )
+    status = models.BooleanField(default=True)
