@@ -1,3 +1,10 @@
 from django.contrib import admin
 
-# Register your models here.
+from parts_demand_api import models
+
+
+class UserProfileModelAdmin(admin.ModelAdmin):
+    list_display = ('email', 'name')
+
+
+admin.site.register(models.UserProfile, UserProfileModelAdmin)

@@ -35,7 +35,7 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     """Database model for users in the system"""
 
     email = models.EmailField(max_length=255, unique=True)
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, verbose_name='nome')
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
@@ -43,6 +43,10 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['name']
+
+    class Meta:
+        verbose_name_plural = 'Usuários'
+        verbose_name = 'Usuário'
 
     def get_full_name(self):
         """Retrieve full name of user"""
