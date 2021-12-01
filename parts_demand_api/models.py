@@ -73,8 +73,8 @@ class DeliveryAddress(models.Model):
     )
     postal_code = models.CharField(
         'CEP', 
-        max_length=4, 
-        validators=[MinLengthValidator(4)]
+        max_length=8, 
+        validators=[MinLengthValidator(8)]
     )
     street = models.CharField('Rua', max_length=50)
     street_number = models.CharField('Número', max_length=10)
