@@ -90,6 +90,11 @@ class DeliveryAddress(models.Model):
     country = models.CharField('País', max_length=50)
 
 
+    class Meta:
+        verbose_name_plural = 'endereços de entrega'
+        verbose_name = 'endereço de entrega'
+
+
 class PartsDemand(models.Model):
     """Parts demand model"""
     part_description = models.CharField('Descrição da peça', max_length=100)
