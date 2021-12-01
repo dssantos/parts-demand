@@ -1,4 +1,6 @@
 from django.db import models
+from django.conf import settings
+from django.core.validators import MinLengthValidator
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.models import BaseUserManager
@@ -59,3 +61,30 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         """Return string representation of our user"""
         return self.email
+
+
+class DeliveryAddress(models.Model):
+    """Delivery address model for parts demands"""
+
+    local_description = models.CharField('Local', max_length=50)
+    user_profile = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
+    postal_code = models.CharField(
+        'CEP', 
+        max_length=4, 
+        validators=[MinLengthValidator(4)]
+    )
+    street = models.CharField('Rua', max_length=50)
+    street_number = models.CharField('Número', max_length=10)
+    complement = models.CharField(
+        'Complemento', 
+        max_length=50, 
+        blank=True, 
+        default=''
+    )
+    district = models.CharField('Bairro', max_length=50)
+    city = models.CharField('Cidade', max_length=50)
+    state = models.CharField('Estado', max_length=50)
+    country = models.CharField('País', max_length=50)
