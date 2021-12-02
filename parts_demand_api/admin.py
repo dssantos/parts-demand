@@ -4,7 +4,7 @@ from parts_demand_api import models
 
 
 class UserProfileModelAdmin(admin.ModelAdmin):
-    list_display = ('email', 'name')
+    list_display = ('name', 'email')
 
 
 class DeliveryAddressModelAdmin(admin.ModelAdmin):

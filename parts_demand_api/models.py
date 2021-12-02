@@ -37,7 +37,7 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     """Database model for users in the system"""
 
     email = models.EmailField(max_length=255, unique=True)
-    name = models.CharField(max_length=255, verbose_name='nome')
+    name = models.CharField('Usuário', max_length=255)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
@@ -69,7 +69,8 @@ class DeliveryAddress(models.Model):
     local_description = models.CharField('Local', max_length=50)
     user_profile = models.ForeignKey(
         settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        verbose_name='Usuário'
     )
     postal_code = models.CharField(
         'CEP', 
@@ -102,7 +103,10 @@ class DeliveryAddress(models.Model):
 class PartsDemand(models.Model):
     """Parts demand model"""
     part_description = models.CharField('Descrição da peça', max_length=100)
-    delivery_address = models.ForeignKey(DeliveryAddress, on_delete=models.CASCADE)
+    delivery_address = models.ForeignKey(
+        DeliveryAddress, 
+        on_delete=models.CASCADE, 
+        verbose_name='Endereço de entrega')
     email = models.CharField('Email', max_length=50)
     phone = models.CharField('Telefone', max_length=11)
     user_profile = models.ForeignKey(
