@@ -60,7 +60,7 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         """Return string representation of our user"""
-        return self.email
+        return self.name
 
 
 class DeliveryAddress(models.Model):
@@ -70,7 +70,7 @@ class DeliveryAddress(models.Model):
     user_profile = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
-        verbose_name='Usuário'
+        verbose_name='Anunciante'
     )
     postal_code = models.CharField(
         'CEP', 
@@ -111,9 +111,10 @@ class PartsDemand(models.Model):
     phone = models.CharField('Telefone', max_length=11)
     user_profile = models.ForeignKey(
         settings.AUTH_USER_MODEL, 
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        verbose_name='Anunciante'
     )
-    status = models.BooleanField('Status de finalização', default=True)
+    status = models.BooleanField('Status de finalização', default=False)
 
 
     class Meta:

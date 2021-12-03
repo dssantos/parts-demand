@@ -13,6 +13,7 @@ class DeliveryAddressModelAdmin(admin.ModelAdmin):
         'street_number', 'complement', 'district', 'city', 'state', 'country'
         )
 
+
 class PartsDemandModelAdmin(admin.ModelAdmin):
     list_display = (
         'part_description', 'delivery_address', 'email', 

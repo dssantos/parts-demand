@@ -180,22 +180,24 @@ class NotOwnerPartsDemandApiTests(TestCase):
             'status': False
         }
         self.request = self.client.post(DEMAND_URL, self.demand2)
-        #self.assertEqual(self.request.status_code, PartsDemand.objects.all()[1].user_profile.id)
 
     def test_list(self):
         request = self.client.get(DEMAND_URL)
         self.assertEqual(request.status_code, status.HTTP_200_OK)
+        self.assertEqual(
+            len(request.data), 
+            len(PartsDemand.objects.filter(user_profile=self.user2)))
 
     def test_retrieve(self):
         request = self.client.get(DEMAND_ITEM_URL)
-        self.assertEqual(request.status_code, status.HTTP_200_OK)
+        self.assertEqual(request.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_update(self):
         request = self.client.put(DEMAND_ITEM_URL, self.demand)
-        self.assertEqual(request.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(request.status_code, status.HTTP_404_NOT_FOUND)
         request = self.client.patch(DEMAND_ITEM_URL, self.demand)
-        self.assertEqual(request.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(request.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_delete(self):
         request = self.client.delete(DEMAND_ITEM_URL)
-        self.assertEqual(request.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(request.status_code, status.HTTP_404_NOT_FOUND)

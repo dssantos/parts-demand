@@ -14,7 +14,14 @@ class UserProfileViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.UserProfileSerializer
     queryset = models.UserProfile.objects.all()
     authentication_classes = (TokenAuthentication,)
-    permissions_classes = (permissions.UpdateOwnProfile,)
+    permissions_classes = (permissions.UpdateOwnProfile, IsAuthenticated)
+
+    def get_queryset(self):
+        """restricts the returned profile to a given user, except if adminuser"""
+        if self.request.user.is_staff:
+            return models.UserProfile.objects.all()
+        queryset = models.UserProfile.objects.filter(id=self.request.user.id)
+        return queryset
 
     
 class UserLoginApiView(ObtainAuthToken):
@@ -35,7 +42,9 @@ class DeliveryAddressViewSet(viewsets.ModelViewSet):
         serializer.save(user_profile=self.request.user)
 
     def get_queryset(self):
-        """restricts the returned address to a given user"""
+        """restricts the returned address to a given user, except if adminuser"""
+        if self.request.user.is_staff:
+            return models.PartsDemand.objects.all()
         queryset = models.DeliveryAddress.objects.filter(
             user_profile=self.request.user
             )
@@ -55,3 +64,12 @@ class PartsDemandViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         """Sets the logged user to the user profile field"""
         serializer.save(user_profile=self.request.user)
+
+    def get_queryset(self):
+        """restricts the returned demands to a given user, except if adminuser"""
+        if self.request.user.is_staff:
+            return models.PartsDemand.objects.all()
+        queryset = models.PartsDemand.objects.filter(
+            user_profile=self.request.user
+            )
+        return queryset

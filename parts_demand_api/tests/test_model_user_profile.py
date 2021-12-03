@@ -15,7 +15,7 @@ class UserProfileModelTest(TestCase):
         self.assertTrue(UserProfile.objects.exists())
 
     def test_str(self):
-        self.assertEqual('test@mail.com', str(self.obj))
+        self.assertEqual('Test User', str(self.obj))
 
     def test_full_name(self):
         self.assertEqual('Test User', self.obj.get_full_name())
