@@ -41,3 +41,17 @@ class DeliveryAddressViewSet(viewsets.ModelViewSet):
             )
         return queryset
     
+
+class PartsDemandViewSet(viewsets.ModelViewSet):
+    """Handles creating, reading and updating parts demand"""
+    authentication_classes = (TokenAuthentication,)
+    serializer_class = serializers.PartsDemandSerialzer
+    queryset = models.PartsDemand.objects.all()
+    permission_classes = (
+        permissions.UpdateOwnPartsDemand,
+        IsAuthenticated        
+    )
+
+    def perform_create(self, serializer):
+        """Sets the logged user to the user profile field"""
+        serializer.save(user_profile=self.request.user)

@@ -46,3 +46,13 @@ class DeliveryAddressSerialzer(serializers.ModelSerializer):
             'state', 'country'
             )
         extra_kwargs = {'user_profile': {'read_only': True}}
+
+
+class PartsDemandSerialzer(serializers.ModelSerializer):
+    """Serializes Parts Demands"""
+
+    class Meta:
+        model = models.PartsDemand
+        fields = (
+            'id', 'part_description', 'delivery_address', 'email', 'phone', 'status')
+        extra_kwargs = {'user_profile': {'read_only': True}}
