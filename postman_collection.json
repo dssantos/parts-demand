@@ -1,0 +1,212 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Parts Demand API",
+		"_postman_id": "eafcea86-3837-bdf1-e099-e883f816f041",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create user /api/profile/",
+			"request": {
+				"url": "127.0.0.1:8000/api/profile/",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "user3@mail.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "user3",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": "Create user"
+			},
+			"response": []
+		},
+		{
+			"name": "Login (Get Token) /api/login/",
+			"request": {
+				"url": "127.0.0.1:8000/api/login/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic dXNlcjFAbWFpbC5jb206MQ==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "user3@mail.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": "UserLoginApiView"
+			},
+			"response": []
+		},
+		{
+			"name": "Create address /api/address/",
+			"request": {
+				"url": "127.0.0.1:8000/api/address/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 07452e73fe7f92c9bb75e912e34f2226d984a38a",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"local_description\": \"Escritório da Federação de Comércio\",\n    \"postal_code\": \"41218770\",\n    \"street\": \"Albino Fernandes\",\n    \"street_number\": \"63\",\n    \"complement\": \"\",\n    \"district\": \"Novo Horizonte\",\n    \"city\": \"Salvador\",\n    \"state\": \"Bahia\",\n    \"country\": \"Brasil\"\n}"
+				},
+				"description": "Create Address"
+			},
+			"response": []
+		},
+		{
+			"name": "Create demand /api/demand/",
+			"request": {
+				"url": "127.0.0.1:8000/api/demand/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 07452e73fe7f92c9bb75e912e34f2226d984a38a",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"part_description\": \"Protoboard\",\n    \"delivery_address\": 3,\n    \"email\": \"user3@mail.com\",\n    \"phone\": \"7199999333\",\n    \"status\": false\n}"
+				},
+				"description": "Create a demand"
+			},
+			"response": []
+		},
+		{
+			"name": "List demand /api/demand/",
+			"request": {
+				"url": "127.0.0.1:8000/api/demand/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 07452e73fe7f92c9bb75e912e34f2226d984a38a",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"part_description\": \"Protoboard\",\n    \"delivery_address\": 3,\n    \"email\": \"user3@mail.com\",\n    \"phone\": \"7199999333\",\n    \"status\": false\n}"
+				},
+				"description": "List all demands"
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve demand item /api/demand/<id>/",
+			"request": {
+				"url": "127.0.0.1:8000/api/demand/3/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 07452e73fe7f92c9bb75e912e34f2226d984a38a",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "Retrieve an demand item"
+			},
+			"response": []
+		},
+		{
+			"name": "Update demand /api/demand/<id>/",
+			"request": {
+				"url": "127.0.0.1:8000/api/demand/3/",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 07452e73fe7f92c9bb75e912e34f2226d984a38a",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"part_description\": \"Motherboard\",\n    \"delivery_address\": 3,\n    \"email\": \"user3@mail.com\",\n    \"phone\": \"7199999333\",\n    \"status\": false\n}"
+				},
+				"description": "Update an demand item"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete demand /api/demand/<id>/",
+			"request": {
+				"url": "127.0.0.1:8000/api/demand/3/",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 07452e73fe7f92c9bb75e912e34f2226d984a38a",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "Delete an demand item"
+			},
+			"response": []
+		}
+	]
+}

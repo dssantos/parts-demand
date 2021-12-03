@@ -1,13 +1,14 @@
 
 # Parts Demand
 
-## How to run
+## 1. Run the project
 To run this project you can use one of the following methods:
-1. Docker-compose
-2. Linux script
-3. Windows script
 
-### 1. Docker-compose (copy and paste)
+    * Docker-compose
+    * Linux script
+    * Windows script
+
+### Docker-compose (copy and paste)
 ```bash
 git clone https://github.com/dssantos/parts-demand.git parts_demand
 cd parts_demand
@@ -15,7 +16,7 @@ docker-compose up --build
 
 ```
 
-### 2. Linux script (copy and paste)
+### Linux script (copy and paste)
 ```bash
 git clone https://github.com/dssantos/parts-demand.git parts_demand
 cd parts_demand
@@ -31,7 +32,7 @@ python manage.py runserver
 
 ```
 
-### 3. Windows script
+### Windows script
 ```bash
 git clone https://github.com/dssantos/parts-demand.git parts_demand
 cd parts_demand
@@ -49,10 +50,16 @@ python manage.py runserver
 
 ```
 
-## Populate database
+## 2. Populate database
 Run this script to populate with user. address and demands sample data
 
 ```bash
 cat contrib/sample_data.py | python manage.py shell
 
 ```
+
+## 3. Have fun!!
+Have fun with the API. Now use the postman collection attached to this repository to test the endponis of this API.
+Remember, some operations need authentication, so generate a new token in /api/login/ and update the request header.
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/881d356a3aa7d07ea433)
