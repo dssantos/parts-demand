@@ -33,4 +33,16 @@ class UserProfileSerializer(serializers.ModelSerializer):
             instance.set_password(password)
  
         return super().update(instance, validated_data)
-        
+
+
+class DeliveryAddressSerialzer(serializers.ModelSerializer):
+    """Serializes Delivery Address"""
+
+    class Meta:
+        model = models.DeliveryAddress
+        fields = (
+            'id', 'local_description', 'user_profile', 'postal_code', 
+            'street', 'street_number', 'complement', 'district', 'city',
+            'state', 'country'
+            )
+        extra_kwargs = {'user_profile': {'read_only': True}}

@@ -8,6 +8,7 @@ from parts_demand_api import views
 
 router = DefaultRouter()
 router.register('profile', views.UserProfileViewSet)
+router.register('address', views.DeliveryAddressViewSet)
 
 urlpatterns = [
     path('login/', views.UserLoginApiView.as_view()),

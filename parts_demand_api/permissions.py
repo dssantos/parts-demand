@@ -11,3 +11,12 @@ class UpdateOwnProfile(permissions.BasePermission):
 
         return obj.id == request.user.id
         
+
+class UpdateOwnDeliveryAddress(permissions.BasePermission):
+    """Allow user to update their own address"""
+
+    def has_object_permission(self, request, view, obj):
+        """Check the user is trying to update their own address"""
+
+        return obj.user_profile.id == request.user.id
+        
