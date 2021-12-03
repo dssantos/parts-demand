@@ -22,7 +22,7 @@ cd parts_demand
 python -m venv .parts_demand
 source .parts_demand/bin/activate
 python -m pip install -U pip
-pip install -r requirements.txt
+pip install -r requirements-dev.txt
 cp contrib/.env-sample .env
 SECRET_KEY=`python contrib/secret_gen.py`
 sed -i "/^SECRET_KEY=/c\SECRET_KEY=$(python contrib/secret_gen.py)" .env
@@ -39,7 +39,7 @@ python -m venv .parts_demand
 Set-ExecutionPolicy Unrestricted -Scope Process -force
 ./.parts_demand/Scripts/activate
 python -m pip install -U pip
-pip install -r requirements.txt
+pip install -r requirements-dev.txt
 cp contrib/.env-sample .env
 python contrib/secret_gen.py
 # Before continue, change SECRET_KEY in .env file
