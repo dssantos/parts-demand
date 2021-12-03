@@ -48,3 +48,11 @@ python manage.py test
 python manage.py runserver
 
 ```
+
+## Populate database
+Run this script to populate with user. address and demands sample data
+
+```bash
+cat contrib/sample_data.py | python manage.py shell
+
+```
