@@ -62,4 +62,4 @@ cat contrib/sample_data.py | python manage.py shell
 Have fun with the API. Now use the postman collection attached to this repository to test the endponis of this API.
 Remember, some operations need authentication, so generate a new token in /api/login/ and update the request header.
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/881d356a3aa7d07ea433)
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://documenter.getpostman.com/view/4817709/UVJhCaAr)
